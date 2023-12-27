@@ -12,13 +12,18 @@ const io = new Server(server);
 
 io.on("connection", (socket) => {
     console.log("User Connected", socket.id);
-    setInterval(() => {
-        socket.emit("message", "hello from server" + " - " + new Date().getTime())
-    }, 2000);
+    // setInterval(() => {
+    //     socket.emit("message", "hello from server" + " - " + new Date().getTime())
+    // }, 2000);
+
+    // Broadcast Set Up
+    socket.on("message", (data) => {
+        socket.broadcast.emit("broadcast",data);
+    })
 
     // Disconnect Event
     socket.on("disconnect", () => {
-        console.log("User Disconnected", socket.id)
+        console.log("User Disconnected", socket.id);
     })
 
 });
