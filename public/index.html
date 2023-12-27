@@ -9,6 +9,25 @@
     <h1>Websockets Demo</h1>
     <input type="text" id="message">
     <button id="send">Send</button>
+    <style>
+        ul{
+            list-style: none;
+        }
+        .sender{
+            background-color: lightcoral;
+            margin-left: 4rem;
+            padding: 1rem;
+        }
+        .receiver{
+            background-color: lightblue;
+            margin-right:2rem;
+            padding:1rem;
+        }
+    </style>
+
+    <div class="messages">
+        <ul></ul>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./script.js"></script>
