@@ -12,7 +12,15 @@ const io = new Server(server);
 
 io.on("connection", (socket) => {
     console.log("User Connected", socket.id);
-    socket.emit("message", "welcome from server",socket.id)
+    setInterval(() => {
+        socket.emit("message", "hello from server" + " - " + new Date().getTime())
+    }, 2000);
+
+    // Disconnect Event
+    socket.on("disconnect", () => {
+        console.log("User Disconnected", socket.id)
+    })
+
 });
 
 // app.get('/', (req,res) => {
@@ -20,6 +28,6 @@ io.on("connection", (socket) => {
 // })
 
 server.listen(3000,() => {
-    console.log("Server Started")
+    console.log("Server Started");
 })
 
