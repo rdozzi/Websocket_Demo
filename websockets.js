@@ -19,7 +19,7 @@ io.on("connection", (socket) => {
 //     res.send('Hello World')
 // })
 
-app.listen(3000,() => {
+server.listen(3000,() => {
     console.log("Server Started")
 })
 
