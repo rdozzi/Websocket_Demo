@@ -1,4 +1,4 @@
 const socket = io(); // Available in global scope because of server side code
-socket.on("Message", (message) =>{
+socket.on("message", (message) =>{
     console.log("receiving message", message)
 })

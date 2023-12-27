@@ -11,8 +11,8 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 io.on("connection", (socket) => {
-    console.log("User Connected");
-    socket.emit("Message: ", "Welcome from Server")
+    console.log("User Connected", socket.id);
+    socket.emit("message", "welcome from server",socket.id)
 });
 
 // app.get('/', (req,res) => {
