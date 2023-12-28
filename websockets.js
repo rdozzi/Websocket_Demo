@@ -11,19 +11,19 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 io.on("connection", (socket) => {
-    console.log("User Connected", socket.id);
+    console.log("user connected", socket.id);
     // setInterval(() => {
     //     socket.emit("message", "hello from server" + " - " + new Date().getTime())
     // }, 2000);
 
-    // Broadcast Set Up
+    /** Broadcast Set Up */
     socket.on("message", (data) => {
         socket.broadcast.emit("broadcast",data);
     })
 
-    // Disconnect Event
+    /**  Disconnect Event */
     socket.on("disconnect", () => {
-        console.log("User Disconnected", socket.id);
+        console.log("user disconnected", socket.id);
     })
 
 });

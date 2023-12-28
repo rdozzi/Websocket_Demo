@@ -8,7 +8,7 @@ btn.addEventListener("click", () =>{
     const div = document.createElement("div");
     div.setAttribute("class","sender");
     const li = document.createElement("li");
-    li.innerText = value;
+    li.innerText = value; //value
     const para = document.createElement("p");
     para.innerText = "sender";
     div.appendChild(para);
@@ -19,6 +19,20 @@ btn.addEventListener("click", () =>{
     socket.emit("message", input.value);
     input.value="";
 });
+
+socket.on("broadcast", (message) => {
+    console.log("broadcast message",message);
+    const div = document.createElement("div");
+    div.setAttribute("class","receiver");
+    const li = document.createElement("li")
+    li.innerText = message;
+    const para = document.createElement("p");
+    para.innerText = "sender";
+    div.appendChild(para);
+    div.appendChild(li);
+    ul.appendChild(div);
+
+})
 
 socket.on("message", (message) =>{
     console.log("receiving message", message);
