@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Websockets</title>
-</head>
-<body>
-    <h1>Websockets Demo</h1>
-    <input type="text" id="message">
-    <button id="send">Send</button>
     <style>
         ul{
             list-style: none;
@@ -24,7 +19,15 @@
             padding:1rem;
         }
     </style>
+</head>
 
+<body>
+    <h1>Websockets Demo</h1>
+    <input type="text" id="message">
+    <button id="send">Send</button>
+    <button id="createGrp">Create Group</button>
+    <button id="joinGrp">Join Group</button>
+    <button id="stg">Send to Group</button>
     <div class="messages">
         <ul id="list"></ul>
     </div>
