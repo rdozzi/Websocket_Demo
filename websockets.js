@@ -9,6 +9,7 @@ const server = http.createServer(app);
 // After extracting the Server object from socket.io, we then add our express app server as a new object
 // of the Socket.io server
 const io = new Server(server);
+let room;
 
 io.on("connection", (socket) => {
     console.log("user connected", socket.id);
@@ -16,9 +17,27 @@ io.on("connection", (socket) => {
     //     socket.emit("message", "hello from server" + " - " + new Date().getTime())
     // }, 2000);
 
-    /** Broadcast Set Up */
+    /** Broadcast Setup */
     socket.on("message", (data) => {
         socket.broadcast.emit("broadcast",data);
+    })
+
+    /** Listen to Create Group */
+    socket.on("create group", (roomId, callback) => {
+        console.log("group created",roomId);
+        room = roomId;
+        socket.join(roomId); //first member of the room
+        callback("group created")
+    })
+
+    /** Listen to Join Group */
+    socket.on("join_grp", () => {
+        console.log(socket.id + "joined the room " + room);
+        socket.join(room);
+    });
+
+    socket.on("grp message", (data) => {
+        socket.to(room).emit("server_grp_msg",data);
     })
 
     /**  Disconnect Event */
