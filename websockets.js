@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
         socket.join(room);
     });
 
-    socket.on("grp message", (data) => {
+    socket.on("server_grp_msg", (data) => { // grp message
         socket.to(room).emit("server_grp_msg",data);
     })
 

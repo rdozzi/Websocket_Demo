@@ -45,7 +45,7 @@ socket.on("broadcast", (message) => {
 grpBtn.addEventListener("click", () =>{
     console.log("group created req");
     socket.emit(
-        "create_grp",
+        "create group", // create_grp
         Math.floor(Math.random(0, 1) * 1000),
         (response) => {
             console.log(response);
@@ -63,12 +63,12 @@ joinGrp.addEventListener("click", () => {
 stg.addEventListener("click", () => {
     const value = input.value;
     if(value){
-        socket.emit("grp message",value);
+        socket.emit("server_grp_msg",value); //grp message
     }
 });
 
 leaveBtn.addEventListener("click", () => {
-    socket.emit("leave room")
+    socket.emit("leave_room")
 })
 
 socket.on("server_grp_msg", (data) =>{
