@@ -40,6 +40,11 @@ io.on("connection", (socket) => {
         socket.to(room).emit("server_grp_msg",data);
     })
 
+    socket.on("leave_room",()=>{
+        console.log(socket.id + "left the room " + room)
+        socket.leave(room)
+    })
+
     /**  Disconnect Event */
     socket.on("disconnect", () => {
         console.log("user disconnected", socket.id);
