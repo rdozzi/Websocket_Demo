@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
 
     /** Listen to Join Group */
     socket.on("join_grp", () => {
-        console.log(socket.id + "joined the room " + room);
+        console.log(socket.id + " joined the room " + room);
         socket.join(room);
     });
 
@@ -41,7 +41,7 @@ io.on("connection", (socket) => {
     })
 
     socket.on("leave_room",()=>{
-        console.log(socket.id + "left the room " + room)
+        console.log(socket.id + " left the room " + room)
         socket.leave(room)
     })
 
